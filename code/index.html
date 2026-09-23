@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ClearCut — Free Background Remover</title>
+  <meta name="description" content="ClearCut removes photo backgrounds instantly in your browser. 100% free, private, no quality loss, no uploads." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✂️</text></svg>" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+
+  <header class="header">
+    <div class="logo">
+      <span class="logo-icon">✂️</span>
+      <span class="logo-text">ClearCut</span>
+    </div>
+    <nav class="nav">
+      <a href="#how" class="nav-link">How it works</a>
+      <a href="#privacy" class="nav-link">Privacy</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Remove backgrounds.<br /><span class="gradient-text">Instantly. Privately. Free.</span></h1>
+      <p class="subtitle">
+        Upload a photo and get a clean transparent PNG in seconds.
+        Everything runs in your browser — your images never leave your device.
+      </p>
+    </section>
+
+    <section class="app" id="app">
+      <!-- Upload Zone -->
+      <div class="upload-zone" id="uploadZone">
+        <input type="file" id="fileInput" accept="image/png,image/jpeg,image/webp,image/jpg,image/heic,image/heif" hidden />
+        <div class="upload-content">
+          <div class="upload-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="17 8 12 3 7 8" />
+              <line x1="12" y1="3" x2="12" y2="15" />
+            </svg>
+          </div>
+          <h2>Drop your photo here</h2>
+          <p>or click to browse · PNG, JPG, WebP</p>
+          <button class="btn btn-primary" id="browseBtn">Choose Image</button>
+        </div>
+      </div>
+
+      <!-- Processing / Result -->
+      <div class="workspace hidden" id="workspace">
+        <div class="preview-row">
+          <div class="preview-card">
+            <div class="preview-label">Original</div>
+            <div class="preview-frame">
+              <img id="originalImg" alt="Original" />
+            </div>
+          </div>
+          <div class="preview-card">
+            <div class="preview-label">Result</div>
+            <div class="preview-frame checkerboard" id="resultFrame">
+              <div class="result-placeholder" id="resultPlaceholder">
+                <div class="spinner" id="spinner"></div>
+                <p id="statusText">Preparing…</p>
+                <div class="progress-bar">
+                  <div class="progress-fill" id="progressFill"></div>
+                </div>
+              </div>
+              <img id="resultImg" alt="Result" class="hidden" />
+            </div>
+          </div>
+        </div>
+
+        <div class="actions" id="actions">
+          <button class="btn btn-secondary" id="newBtn">New Image</button>
+          <button class="btn btn-primary" id="downloadBtn" disabled>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Download PNG
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="how">
+      <h2>Why ClearCut?</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h3>100% Private</h3>
+          <p>Images are processed entirely in your browser. Nothing is uploaded or stored on any server.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💎</div>
+          <h3>No Quality Loss</h3>
+          <p>Output is a full-resolution transparent PNG. No compression, no watermarks, no downscaling.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🆓</div>
+          <h3>Completely Free</h3>
+          <p>No accounts, no credits, no limits. Powered by open-source AI that runs on your device.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Fast & Offline</h3>
+          <p>After the first model download, it works offline. WebGPU accelerates when available.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="privacy" id="privacy">
+      <h2>Privacy First</h2>
+      <p>
+        ClearCut uses the open-source <code>@imgly/background-removal</code> library.
+        The AI model (ISNet) downloads once and is cached by your browser.
+        Your photos never leave your device — not even for a millisecond.
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>ClearCut · Free forever · Made with ✂️</p>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
